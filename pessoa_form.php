@@ -2,12 +2,7 @@
 require_once 'db/pessoa_db.php';
 
 if (!empty($_REQUEST['action'])) {
-    $host     = '127.0.0.1';
-    $user     = 'root';
-    $password = '';
-    $database = 'livro';
-    $conn     = mysqli_connect($host, $user, $password, $database);
-
+    
     if ($_REQUEST['action'] == 'edit') {
         $id     = (int) $_GET['id'];
         $pessoa = get_pessoa($id);       
@@ -23,8 +18,6 @@ if (!empty($_REQUEST['action'])) {
         
         print ($result) ? 'Registro salvo com sucesso.' : $result;
     }
-
-    mysqli_close($conn);
 } else {
     $pessoa = [];
     $pessoa['id'] = $pessoa['nome'] = $pessoa['endereco'] = $pessoa['bairro'] = $pessoa['telefone'] = $pessoa['email'] = $pessoa['id_cidade'] = ''; 
